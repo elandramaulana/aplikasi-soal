@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class EditController extends Controller
+class GenerateSoalController extends Controller
 {
     public function index(){
-        return view('edit.index');
+        return view('createsoal.index');
     }
 }

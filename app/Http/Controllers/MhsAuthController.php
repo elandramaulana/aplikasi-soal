@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AddMatkulController extends Controller
+class MhsAuthController extends Controller
 {
     public function index() {
-        return view('addmatkul.index');
+        return view('login.loginmhs');
     }
 }

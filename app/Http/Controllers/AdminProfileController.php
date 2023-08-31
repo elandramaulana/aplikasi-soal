@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class EditController extends Controller
+class AdminProfileController extends Controller
 {
     public function index(){
-        return view('edit.index');
+        return view('profile.admin');
     }
 }

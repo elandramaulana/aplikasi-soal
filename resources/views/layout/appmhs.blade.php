@@ -32,44 +32,31 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboardmhs')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-user"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Mahasiswa <sup>2</sup></div>
             </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('dashboard')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-            <hr class="sidebar-divider">
-
-            <!-- Nav Item - soal ujian -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('generatesoal')}}">
-                    <i class="fas fa-fw fa-pen"></i>
-                    <span>Generate Soal Ujian</span></a>
-            </li>
-            <hr class="sidebar-divider">
 
 
             <!-- Nav Item - grafik -->
             <li class="nav-item">
-                <a class="nav-link" href="{{route('chart')}}">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Grafik Capaian</span></a>
+                <a class="nav-link" href="{{route('dashboardmhs')}}">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Matakuliah</span></a>
             </li>
+            <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Divider -->
+            <!-- Nav Item - Hasil Asesmen -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('asesmen')}}">
+                    <i class="fas fa-fw fa-chart-bar"></i>
+                    <span>Hasil Asesmen</span></a>
+            </li>
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -106,14 +93,14 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Budi Rahmadya</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Elandra Maulana</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('template/img/avatar.svg') }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{ route('profileadmin') }}">
+                                <a class="dropdown-item" href="{{ route('profilemhs') }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -133,7 +120,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                  @yield('content')
+                  @yield('contentmhs')
 
                 </div>
                 <!-- /.container-fluid -->

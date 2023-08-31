@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AddMatkulController extends Controller
+class AddCpmkController extends Controller
 {
     public function index() {
-        return view('addmatkul.index');
+        return view('addcpmk.index');
     }
 }

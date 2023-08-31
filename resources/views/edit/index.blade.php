@@ -27,53 +27,53 @@
               <div class="form-group">
                 <label for="kode">Nama Mata Kuliah</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="MK101" disabled>
+                  <input type="text" class="form-control" id="kode" value="Sinyal Dan Sistem" >
                 </div>
               </div>
               <div class="form-group">
                 <label for="kode">Kode Mata Kuliah</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="MK101" disabled>
+                  <input type="text" class="form-control" id="kode" value="MK101" >
                 </div>
               </div>
               <div class="form-group">
                 <label for="kode">Jumlah SKS</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="MK101" disabled>
+                  <input type="text" class="form-control" id="kode" value="2" >
                 </div>
               </div>
               <div class="form-group">
                 <label for="kode">Semester</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="MK101" disabled>
+                  <input type="text" class="form-control" id="kode" value="5" >
                 </div>
               </div>
               <div class="form-group">
                 <label for="kode">Dosen Pengampu</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="MK101" disabled>
+                  <input type="text" class="form-control" id="kode" value="Ir. Eng Budi Rahmadya" >
                 </div>
               </div>
               <div class="form-group">
                 <label for="kode">CPMK 1</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="MK101" disabled>
-                  <div class="input-group-append">
-                    <a href="{{ route('') }}" class="btn btn-outline-primary" type="button" onclick="editField('kode')">Edit</a>
-                  </div>
+                  <input type="text" class="form-control" id="kode" value="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, aliquam." >
+                  {{-- <div class="input-group-append">
+                    <a href="{{ route('edit') }}" class="btn btn-outline-primary" type="button" onclick="editField('kode')">Edit</a>
+                  </div> --}}
                 </div>
               </div>
               <div class="form-group">
                 <label for="kode">CPMK 2</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="MK101" disabled>
-                  <div class="input-group-append">
+                  <input type="text" class="form-control" id="kode" value="Lorem ipsum dolor sit amet consectetur, adipisicing elit." >
+                  {{-- <div class="input-group-append">
                     <button class="btn btn-outline-primary" type="button" onclick="editField('kode')">Edit</button>
-                  </div>
+                  </div> --}}
                 </div>
               </div>
               <!-- Sisipkan elemen form-group dan input lain dengan struktur serupa -->
-              <button type="submit" class="btn btn-success">Simpan</button>
+              <button type="submit" class="btn btn-success">Update</button>
             </form>
           </div>
         </div>
