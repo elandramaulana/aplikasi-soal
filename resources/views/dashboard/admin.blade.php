@@ -8,7 +8,7 @@
                 <!-- DataTales Example -->
       <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="{{ route('addmatkul') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>   Tambah Matkul</a>
+                            <a href="{{ route('matkul') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>   Tambah Matkul</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -16,26 +16,39 @@
                                     <thead>
                                         <tr>
                                             <th>Nama Matkul</th>
+                                            <th>Kode Matkul</th>
                                             <th>Jumlah SKS</th>
+                                            <th>Semester</th>
                                             <th>Dosen Pengampu</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($matkul as $m)
                                         <tr>
-                                            <td>Sinyal Dan Sistem</td>
-                                            <td>2</td>
+                                            <td>{{ $m->nama_matkul }}</td>
+                                            <td>{{ $m->kode_matkul }}</td>
+                                            <td>{{ $m->sks }}</td>
+                                            <td>{{ $m->semester }}</td>
                                             <td>
-                                                Ir. Eng Budi Rahmadya <br>
-                                                Rizka Hadelina, M.T
+                                                @php
+                                                    $dosenArray = explode('|', $m->dosen);
+                                                @endphp
+
+                                                @foreach ($dosenArray as $dosen)
+                                                    {{ trim($dosen) }}<br>
+                                                @endforeach
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="{{ route('edit') }}" class="btn btn-primary btn-sm">Edit</a>
-                                                    <a href="{{ route('cpmk') }}" class="btn btn-success btn-sm ml-2">CPMK</a>
+                                                    <a href="/{{ $m->id }}/cpmk" class="btn btn-success btn-sm ml-2">CPMK</a>
+                                                    <a href="/matkul-edit/{{ $m->id }}" class="btn btn-primary btn-sm ml-2">Edit</a>
+                                                    <a href="/matkul/{{ $m->id }}" class="btn btn-danger btn-sm ml-2">Hapus</a>
                                                 </div>
                                             </td>
                                         </tr>
+                                    @endforeach
+
                               </tbody>
                         </table>
                   </div>

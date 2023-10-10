@@ -17,6 +17,7 @@ use App\Http\Controllers\MakeSoalUjianController;
 use App\Http\Controllers\MhsAuthController;
 use App\Http\Controllers\UjianController;
 use App\Http\Controllers\RemedialController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,66 +34,76 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MhsAuthController::class, 'index'])->name('mahasiswa');
 
-Route::controller(AdminAuthController::class)->prefix('admin')->group(function(){
+Route::controller(AdminAuthController::class)->prefix('admin')->group(function () {
     Route::get('', 'index')->name('admin');
 });
 
-Route::controller(DashboardAdminController::class)->prefix('dashboard')->group(function(){
-    Route::get('', 'index')->name('dashboard');
+//Route::controller(MahasiswaProfileController::class)->prefix('profilemhs')->group(function () {
+//    Route::get('', 'index')->name('profilemhs');
+//});
+//
+//Route::controller(AdminProfileController::class)->prefix('profileadmin')->group(function () {
+//    Route::get('', 'index')->name('profileadmin');
+//});
+
+Route::middleware(['auth','checkRole:admin'])->group(function () {
+    //profile admin
+    Route::get('/profileadmin', [AdminProfileController::class, 'index'])->name('profileadmin');
+    //dashboard admin
+    Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
+    //matkul
+    Route::get('/matkul', [AddMatkulController::class, 'index'])->name('getmatkul');
+    Route::post('/matkul', [AddMatkulController::class, 'store'])->name('matkul');
+    Route::get('/matkul-edit/{id}', [AddMatkulController::class, 'edit'])->name('editmatkul');
+    Route::put('/matkul-edit', [AddMatkulController::class, 'update'])->name('editmatkul');
+    Route::get('/matkul/{id}', [AddMatkulController::class, 'hapus'])->name('deletematkul');
+    //cpmk
+    Route::get('/{id}/cpmk', [CpmkController::class, 'index'])->name('getcpmk');
+    Route::get('/{id}/addcpmk', [AddCpmkController::class, 'index'])->name('cpmk');
+    Route::post('/addcpmk', [CpmkController::class, 'store'])->name('addcpmk');
+//    Route::get('/cpmk-edit/{id}', [CpmkController::class, 'edit'])->name('editcpmk');
+//    Route::put('/cpmk-edit', [CpmkController::class, 'update'])->name('editcpmk');
+    Route::get('/cpmk/{id}', [CpmkController::class, 'hapus'])->name('deletecpmk');
+    //soal
+    Route::get('/{id}/soal', [AddSoalController::class, 'index'])->name('soal');
+    Route::get('/{id}/addsoal', [AddSoalController::class, 'store'])->name('addsoal');
+    Route::post('/addsoalesy', [AddSoalController::class, 'store_essay'])->name('addsoalesy');
+    Route::post('/addsoalobj', [AddSoalController::class, 'store_objective'])->name('addsoalobj');
+    //generate soal
+    Route::get('/generatesoal', [GenerateSoalController::class, 'index'])->name('generatesoal');
+    Route::post('/generate-paket-soal', [GenerateSoalController::class, 'generatePaketSoal'])->name('generate-paket-soal');
+    Route::get('/{id}/generate-soal', [MakeSoalUjianController::class, 'index'])->name('makesoalujian');
+    //Paket soal
+    Route::get('/{id}/paket-soal', [GenerateSoalController::class, 'showSoal'])->name('showsoal');
+    Route::get('/paket-soal/{id}', [GenerateSoalController::class, 'hapus'])->name('deletesoal');
+    //Chart
+    Route::get('/chart', [ChartController::class, 'index'])->name('chart');
 });
 
-Route::controller(DashboardMhsController::class)->prefix('dashboardmhs')->group(function(){
-    Route::get('', 'index')->name('dashboardmhs');
+Route::middleware(['auth','checkRole:member'])->group(function () {
+    //profile mhs
+    Route::get('profilemhs', [MahasiswaProfileController::class, 'index'])->name('profilemhs');
+    //dashboard mhs
+    Route::get('/dashboardmhs', [DashboardMhsController::class, 'index'])->name('dashboardmhs');
+    //assessment mhs
+    Route::get('/asesmen', [HasilAsesmenController::class, 'index'])->name('asesmen');
+    //ujian mhs
+    Route::get('/ujian/{id}', [UjianController::class, 'index'])->name('ujian');
+    //remedial
+    Route::get('/remedial', [RemedialController::class, 'index'])->name('remedial');
+});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::controller(EditController::class)->prefix('edit')->group(function(){
-    Route::get('', 'index')->name('edit');
-});
-
-Route::controller(AddMatkulController::class)->prefix('addmatkul')->group(function(){
-    Route::get('', 'index')->name('addmatkul');
-});
-
-Route::controller(CpmkController::class)->prefix('cpmk')->group(function(){
-    Route::get('', 'index')->name('cpmk');
-});
-
-Route::controller(AddCpmkController::class)->prefix('addcpmk')->group(function(){
-    Route::get('', 'index')->name('addcpmk');
-});
-
-Route::controller(AddSoalController::class)->prefix('addsoal')->group(function(){
-    Route::get('', 'index')->name('addsoal');
-});
-
-Route::controller(ChartController::class)->prefix('chart')->group(function(){
-    Route::get('', 'index')->name('chart');
-});
-
-Route::controller(UjianController::class)->prefix('ujian')->group(function(){
-    Route::get('', 'index')->name('ujian');
-});
-
-Route::controller(RemedialController::class)->prefix('remedial')->group(function(){
-    Route::get('', 'index')->name('remedial');
-});
-
-Route::controller(HasilAsesmenController::class)->prefix('asesmen')->group(function(){
-    Route::get('', 'index')->name('asesmen');
-});
-
-Route::controller(GenerateSoalController::class)->prefix('generatesoal')->group(function(){
-    Route::get('', 'index')->name('generatesoal');
-});
-
-Route::controller(MakeSoalUjianController::class)->prefix('makesoalujian')->group(function(){
-    Route::get('', 'index')->name('makesoalujian');
-});
-
-Route::controller(MahasiswaProfileController::class)->prefix('profilemhs')->group(function(){
-    Route::get('', 'index')->name('profilemhs');
-});
-
-Route::controller(AdminProfileController::class)->prefix('profileadmin')->group(function(){
-    Route::get('', 'index')->name('profileadmin');
-});
+require __DIR__.'/auth.php';

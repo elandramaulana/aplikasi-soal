@@ -23,58 +23,43 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Detail Mata Kuliah</h4>
-            <form>
+              @foreach($matkul as $m)
+            <form method="post" action="/matkul-edit">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="id" value="{{ $m->id }}">
               <div class="form-group">
-                <label for="kode">Nama Mata Kuliah</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="Sinyal Dan Sistem" >
-                </div>
+                  <label for="nama_matkul">Nama Mata Kuliah</label>
+                  <input type="text" class="form-control" id="nama_matkul" name="nama_matkul" value="{{ $m->nama_matkul }}" >
               </div>
               <div class="form-group">
                 <label for="kode">Kode Mata Kuliah</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="MK101" >
+                  <input type="text" class="form-control" id="kode" name="kode_matkul" value="{{ $m->kode_matkul }}" >
                 </div>
               </div>
               <div class="form-group">
                 <label for="kode">Jumlah SKS</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="2" >
+                  <input type="number" class="form-control" id="kode" name="sks" value="{{ $m->sks }}" >
                 </div>
               </div>
               <div class="form-group">
                 <label for="kode">Semester</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="5" >
+                  <input type="number" class="form-control" id="kode" name="semester" value="{{ $m->semester }}" >
                 </div>
               </div>
               <div class="form-group">
                 <label for="kode">Dosen Pengampu</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="Ir. Eng Budi Rahmadya" >
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="kode">CPMK 1</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, aliquam." >
-                  {{-- <div class="input-group-append">
-                    <a href="{{ route('edit') }}" class="btn btn-outline-primary" type="button" onclick="editField('kode')">Edit</a>
-                  </div> --}}
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="kode">CPMK 2</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" id="kode" value="Lorem ipsum dolor sit amet consectetur, adipisicing elit." >
-                  {{-- <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="button" onclick="editField('kode')">Edit</button>
-                  </div> --}}
+                  <input type="text" class="form-control" id="kode" name="dosen" value="{{ $m->dosen }}" >
                 </div>
               </div>
               <!-- Sisipkan elemen form-group dan input lain dengan struktur serupa -->
               <button type="submit" class="btn btn-success">Update</button>
             </form>
+              @endforeach
           </div>
         </div>
       </div>

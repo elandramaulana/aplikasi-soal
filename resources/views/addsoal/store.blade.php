@@ -25,6 +25,7 @@
         <div class="card">
           <div class="card-header">
             <h4>Create a Question</h4>
+              <a href="/dashboard">Back to Dashboard</a>
           </div>
           <div class="card-body">
             <ul class="nav nav-tabs" id="questionTypeTabs" role="tablist">
@@ -37,33 +38,56 @@
             </ul>
             <div class="tab-content" id="questionTypeContent">
               <div class="tab-pane fade show active" id="essay" role="tabpanel" aria-labelledby="essay-tab">
-                <label for="essayQuestion">Essay Question:</label>
-                <textarea class="form-control" id="essayQuestion" rows="3"></textarea>
+                  <form action="/addsoalesy" method="post" enctype="multipart/form-data">
+                      @csrf
+                      @foreach($cpmk as $c)
+                          <input type="hidden" class="form-control" id="cpmk" value="{{ $c->id }}" name="cpmk_id">
+                      @endforeach
+                      <label for="essayQuestion">Essay Question:</label>
+                      <textarea class="form-control" id="essayQuestion" name="question" rows="3"></textarea>
+                      <label for="question_photo">Essay Picture</label>
+                      <input type="file" class="form-control" id="question_photo" name="question_photo">
+                      <label for="points">Points:</label>
+                      <input type="number" class="form-control" id="points" name="point">
+                      <button type="submit" class="btn btn-primary mt-3" id="submitQuestion">Submit</button>
+                  </form>
+                  <button class="btn btn-primary mt-3" id="generateQuestion">Generate Question</button>
               </div>
               <div class="tab-pane fade" id="objective" role="tabpanel" aria-labelledby="objective-tab">
-                <label for="objectiveQuestion">Objective Question:</label>
-                <input type="text" class="form-control" id="objectiveQuestion">
-                <label for="answerA">Answer A:</label>
-                <input type="text" class="form-control" id="answerA">
-                <label for="answerB">Answer B:</label>
-                <input type="text" class="form-control" id="answerB">
-                <label for="answerC">Answer C:</label>
-                <input type="text" class="form-control" id="answerC">
-                <label for="answerD">Answer D:</label>
-                <input type="text" class="form-control" id="answerD">
-                <label for="correctAnswer">Correct Answer:</label>
-                <select class="form-control" id="correctAnswer">
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                  <option value="D">D</option>
-                </select>
+                  <form action="/addsoalobj" method="post" enctype="multipart/form-data">
+                      @csrf
+                      @foreach($cpmk as $c)
+                          <input type="hidden" class="form-control" id="cpmk" value="{{ $c->id }}" name="cpmk_id">
+                      @endforeach
+                      <label for="objectiveQuestion">Objective Question:</label>
+                      <input type="text" class="form-control" id="objectiveQuestion" name="question">
+                      <label for="question_photo">Objective Picture</label>
+                      <input type="file" class="form-control" id="question_photo" name="question_photo">
+                      <label for="answerA">Answer A:</label>
+                      <input type="text" class="form-control" id="answerA" name="answer_a">
+                      <label for="answerB">Answer B:</label>
+                      <input type="text" class="form-control" id="answerB" name="answer_b">
+                      <label for="answerC">Answer C:</label>
+                      <input type="text" class="form-control" id="answerC" name="answer_c">
+                      <label for="answerD">Answer D:</label>
+                      <input type="text" class="form-control" id="answerD" name="answer_d">
+                      <label for="correctAnswer">Correct Answer:</label>
+                      <select class="form-control" id="correctAnswer" name="correct_answer">
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="C">C</option>
+                          <option value="D">D</option>
+                      </select>
+                      <label for="points">Points:</label>
+                      <input type="number" class="form-control" id="points" name="point">
+                      <button class="btn btn-primary mt-3" id="submitQuestion">Submit</button>
+                  </form>
+                  <button class="btn btn-primary mt-3" id="generateQuestion">Generate Question</button>
               </div>
             </div>
-            <label for="points">Points:</label>
-            <input type="number" class="form-control" id="points">
-            <button class="btn btn-primary mt-3" id="generateQuestion">Generate Question</button>
-            <button class="btn btn-primary mt-3" id="generateQuestion">Submit</button>
+{{--            <label for="points">Points:</label>--}}
+{{--            <input type="number" class="form-control" id="points" name="point">--}}
+{{--            --}}
           </div>
         </div>
       </div>

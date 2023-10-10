@@ -11,27 +11,39 @@
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
-                                <tr>
-                                    <th>Nama Matkul</th>
-                                    <th>Jumlah SKS</th>
-                                    <th>Dosen Pengampu</th>
-                                    <th>Aksi</th>
-                                </tr>
+                            <tr>
+                                <th>Nama Matkul</th>
+                                <th>Kode Matkul</th>
+                                <th>Jumlah SKS</th>
+                                <th>Semester</th>
+                                <th>Dosen Pengampu</th>
+                                <th>Aksi</th>
+                            </tr>
                             </thead>
                             <tbody>
+                            @foreach($matkul as $m)
                                 <tr>
-                                    <td>Sinyal Dan Sistem</td>
-                                    <td>2</td>
+                                    <td>{{ $m->nama_matkul }}</td>
+                                    <td>{{ $m->kode_matkul }}</td>
+                                    <td>{{ $m->sks }}</td>
+                                    <td>{{ $m->semester }}</td>
                                     <td>
-                                        Ir. Eng Budi Rahmadya <br>
-                                        Rizka Hadelina, M.T
+                                        @php
+                                            $dosenArray = explode('|', $m->dosen);
+                                        @endphp
+
+                                        @foreach ($dosenArray as $dosen)
+                                            {{ trim($dosen) }}<br>
+                                        @endforeach
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('makesoalujian') }}" class="btn btn-primary btn-sm">Buat Soal</a>
+                                            <a href="/{{ $m->id }}/generate-soal" class="btn btn-primary btn-sm mr-2">Buat Soal</a>
+                                            <a href="/{{ $m->id }}/paket-soal" class="btn btn-success btn-sm">Lihat Soal</a>
                                         </div>
                                     </td>
                                 </tr>
+                            @endforeach
                       </tbody>
                 </table>
           </div>

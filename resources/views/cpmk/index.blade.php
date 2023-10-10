@@ -8,7 +8,10 @@
                 <!-- DataTales Example -->
       <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="{{ route('addcpmk') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>   Tambah CPMK</a>
+                            @foreach($matkul as $m)
+                                <a href="/{{ $m->id }}/addcpmk" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>   Tambah CPMK</a>
+                            @endforeach
+
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -22,30 +25,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($cpmk as $c)
                                         <tr>
-                                            <td>CPMK 1</td>
-                                            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium dolores maxime voluptatum, error sint voluptas!</td>
-                                            <td>Ir. Eng Budi Rahmadya</td>
-                                            <td>
-                                                <a href="{{ route('addsoal') }}" class="btn btn-primary btn-sm">Tambah Soal</a>
-                                            </td>
+                                                <td>CPMK-{{ $c->cpmk }}</td>
+                                                <td>{{ $c->keterangan }}</td>
+                                                @foreach($matkul as $m)
+                                                <td>
+                                                    @php
+                                                        $dosenArray = explode('|', $m->dosen);
+                                                    @endphp
+
+                                                    @foreach ($dosenArray as $dosen)
+                                                        {{ trim($dosen) }}<br>
+                                                    @endforeach
+                                                </td>
+                                                @endforeach
+                                                <td>
+                                                    <a href="/{{ $c->id }}/addsoal" class="btn btn-success btn-sm">Add Soal</a>
+                                                    <a href="/{{ $c->id }}/soal" class="btn btn-primary btn-sm mt-2">Show Soal</a>
+{{--                                                    <a href="/cpmk-edit/{{ $c->id }}" class="btn btn-primary btn-sm">Edit</a>--}}
+                                                    <a href="/cpmk/{{ $c->id }}" class="btn btn-danger btn-sm mt-2  ">Hapus</a>
+                                                </td>
                                         </tr>
-                                        <tr>
-                                            <td>CPMK 2</td>
-                                            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores deleniti facilis non.</td>
-                                            <td>Rizka Hadelina, M.T</td>
-                                            <td>
-                                                <a href="{{ route('addsoal') }}" class="btn btn-primary btn-sm">Tambah Soal</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>CPMK 3</td>
-                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, totam nisi!</td>
-                                            <td>Nefy Puteri Novani, M.T</td>
-                                            <td>
-                                                <a href="{{ route('addsoal') }}" class="btn btn-primary btn-sm">Tambah Soal</a>
-                                            </td>
-                                        </tr>
+                                    @endforeach
                               </tbody>
                         </table>
                   </div>

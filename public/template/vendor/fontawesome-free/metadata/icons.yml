@@ -5270,7 +5270,7 @@ database:
   changes:
     - '4.1'
     - 5.0.0
-  label: Database
+  label: Database.sqlite
   search:
     terms:
       - computer

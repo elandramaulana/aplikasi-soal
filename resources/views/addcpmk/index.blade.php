@@ -22,27 +22,35 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Tambah CPMK</h4>
-            <form>
+            <form method="post" action="/addcpmk">
+                @csrf
+                @foreach($matkul as $m)
+                    <input type="hidden" class="form-control" id="cpmk" value="{{ $m->id }}" name="matkul_id">
+                @endforeach
               <div class="form-group">
-                <label for="nama">CPMK (Nomor)</label>
-                <input type="text" class="form-control" id="cpmk" name="nama">
+                <label for="cpmk">CPMK (Nomor)</label>
+                <input type="text" class="form-control" id="cpmk" name="cpmk">
               </div>
               <div class="form-group">
-                <label for="nama">Keterangan</label>
+                <label for="keterangan">Keterangan</label>
                 <input type="text" class="form-control" id="keterangan" name="keterangan">
               </div>
+                <div class="form-group">
+                    <label for="persentase">Persentase</label>
+                    <input type="number" class="form-control" id="persentase" name="persentase">
+                </div>
               <div class="mb-3">
                 <label class="form-label">Remedial</label>
                 <div class="form-check">
-                  <input type="radio" class="form-check-input" id="keterangan_ya" name="keterangan" value="ya">
+                  <input type="radio" class="form-check-input" id="keterangan_ya" name="remedial" value="1">
                   <label class="form-check-label" for="keterangan_ya">Ya</label>
                 </div>
                 <div class="form-check">
-                  <input type="radio" class="form-check-input" id="keterangan_tidak" name="keterangan" value="tidak">
+                  <input type="radio" class="form-check-input" id="keterangan_tidak" name="remedial" value="0">
                   <label class="form-check-label" for="keterangan_tidak">Tidak</label>
                 </div>
                 <br>
-
+            </div>
               {{-- <div id="kolom-dinamis">
                 <!-- Kolom pertama (default) -->
                 <div class="form-group" id="kolom1-div">
@@ -61,6 +69,7 @@
       </div>
     </div>
   </div>
+
 
   <!-- Tambahkan skrip JavaScript di sini -->
   <script>

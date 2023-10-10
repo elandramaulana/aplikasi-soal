@@ -22,26 +22,27 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Tambah Mata Kuliah</h4>
-            <form>
+            <form action="/matkul" method="post">
+                @csrf
               <div class="form-group">
                 <label for="nama">Nama Matakuliah</label>
-                <input type="text" class="form-control" id="nama" name="nama">
+                <input type="text" class="form-control" id="nama" name="nama_matkul">
               </div>
               <div class="form-group">
                 <label for="nama">Kode Matakuliah</label>
-                <input type="text" class="form-control" id="nama" name="nama">
+                <input type="text" class="form-control" id="nama" name="kode_matkul">
               </div>
               <div class="form-group">
                 <label for="nama">Jumlah SKS</label>
-                <input type="text" class="form-control" id="nama" name="nama">
+                <input type="number" class="form-control" id="nama" name="sks">
               </div>
               <div class="form-group">
                 <label for="nama">Semester</label>
-                <input type="text" class="form-control" id="nama" name="nama">
+                <input type="number" class="form-control" id="nama" name="semester">
               </div>
               <div class="form-group">
                 <label for="nama">Dosen Pengampu</label>
-                <input type="text" class="form-control" id="nama" name="nama">
+                <input type="text" class="form-control" id="nama" name="dosen">
               </div>
 
               {{-- <div id="kolom-dinamis">
@@ -64,27 +65,27 @@
   </div>
 
   <!-- Tambahkan skrip JavaScript di sini -->
-  <script>
-    let kolomCounter = 1;
+{{--  <script>--}}
+{{--    let kolomCounter = 1;--}}
 
-    function tambahKolom() {
-      kolomCounter++;
-      const kolomHTML = `
-        <div class="form-group" id="CPMK${kolomCounter}-div">
-          <label for="CPMK${kolomCounter}">CPMK ${kolomCounter}</label>
-          <input type="text" class="form-control" id="CPMK${kolomCounter}" name="CPMK${kolomCounter}">
-        </div>
-      `;
-      document.getElementById("kolom-dinamis").insertAdjacentHTML("beforeend", kolomHTML);
-    }
+{{--    function tambahKolom() {--}}
+{{--      kolomCounter++;--}}
+{{--      const kolomHTML = `--}}
+{{--        <div class="form-group" id="CPMK${kolomCounter}-div">--}}
+{{--          <label for="CPMK${kolomCounter}">CPMK ${kolomCounter}</label>--}}
+{{--          <input type="text" class="form-control" id="CPMK${kolomCounter}" name="CPMK${kolomCounter}">--}}
+{{--        </div>--}}
+{{--      `;--}}
+{{--      document.getElementById("kolom-dinamis").insertAdjacentHTML("beforeend", kolomHTML);--}}
+{{--    }--}}
 
-    function hapusKolom() {
-      if (kolomCounter > 1) {
-        const kolomDiv = document.getElementById(`CPMK${kolomCounter}-div`);
-        kolomDiv.parentNode.removeChild(kolomDiv);
-        kolomCounter--;
-      }
-    }
-  </script>
+{{--    function hapusKolom() {--}}
+{{--      if (kolomCounter > 1) {--}}
+{{--        const kolomDiv = document.getElementById(`CPMK${kolomCounter}-div`);--}}
+{{--        kolomDiv.parentNode.removeChild(kolomDiv);--}}
+{{--        kolomCounter--;--}}
+{{--      }--}}
+{{--    }--}}
+{{--  </script>--}}
 </body>
 </html>
