@@ -20,68 +20,45 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('template/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('template/css/style.css')}}" rel="stylesheet">
 
 </head>
 
-<body class="bg-gradient-primary">
-
-    <div class="container">
-
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-xl-7 col-lg-12 col-md-1">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-6">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-
-                            <div class="col-lg-12">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
-                                    </div>
-                                    <form class="user" method="POST" action="{{ route('login') }}">
-                                        @csrf
-                                        <div class="form-group">
-                                            <input type="text" name="username" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Masukkan Username">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary btn-user btn-block" type="submit">
-                                            Login
-                                        </button>
-{{--                                        <a href="" class="btn btn-primary btn-user btn-block">--}}
-{{--                                            Login--}}
-{{--                                        </a>--}}
-                                        <hr>
-                                        <br>
-{{--                                        <div class="text-center">--}}
-{{--                                            <a class="small" href="{{ route('admin') }}">Login Admin/Dosen</a>--}}
-{{--                                        </div>--}}
-
-                                    </form>
+<body class="">
+            <div class="container">
+                <div class="row d-flex justify-content-center mt-5">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card py-3 px-2">
+                        
+                            <div class="row mx-auto ">
+                                <div class="col-sm-12">
+                                    <img class="img-fluid" src="{{asset('template/img/logo.png')}}" alt="">
                                 </div>
                             </div>
+                            <h4 class="text-center mb-3 mt-2">Login </h4>
+                            <div class="division">
+                                <div class="row">
+                                    <div class="col-3"><div class="line l"></div></div>
+                                    <div class="col-6"><span>Login Using Username</span></div>
+                                    <div class="col-3"><div class="line r"></div></div>
+                                </div>
+                            </div>
+                            <form class="user myform" method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <input name="username" type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="NIP/NIM">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control form-control-user" placeholder="Password">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Login</small></button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-        </div>
-
-    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('template/vendor/jquery/jquery.min.js')}}"></script>

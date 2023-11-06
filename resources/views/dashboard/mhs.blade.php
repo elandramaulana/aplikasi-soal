@@ -37,7 +37,7 @@
                                                     @endforeach
                                                 </td>
                                                 <td>
-                                                    <a href="" class="btn btn-info btn-sm">Unduh Rubrik</a>
+                                                    <a href="{{ $m->rubrik }}" class="btn btn-info btn-sm">Unduh Rubrik</a>
                                                 </td>
                                                 <td>
                                                     <div class="btn-group">

@@ -56,6 +56,12 @@
                   <input type="text" class="form-control" id="kode" name="dosen" value="{{ $m->dosen }}" >
                 </div>
               </div>
+                <div class="form-group">
+                    <label for="kode">Link Rubrik</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="kode" name="rubrik" value="{{ $m->rubrik }}" >
+                    </div>
+                </div>
               <!-- Sisipkan elemen form-group dan input lain dengan struktur serupa -->
               <button type="submit" class="btn btn-success">Update</button>
             </form>

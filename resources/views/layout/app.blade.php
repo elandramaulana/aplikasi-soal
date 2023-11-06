@@ -26,13 +26,13 @@
 
 </head>
 
-<body id="page-top">
+<body  id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul style="background-image: url('/template/img/rektorat.png'); background-size:cover;background-repeat: no-repeat;background-attachment: fixed;" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
@@ -95,9 +95,14 @@
                         </button>
                     </form>
 
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="col-sm-12">
+                              <img class="img-fluid" width="300" src="{{asset('template/img/logo.png')}}" alt="">
+                            </div>
+                    </form>
+
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 

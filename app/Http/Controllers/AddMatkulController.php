@@ -12,13 +12,15 @@ class AddMatkulController extends Controller
     }
     public function store(Request $request)
     {
-        DB::table('matkul')->insert([
+        $test = DB::table('matkul')->insert([
             'nama_matkul' => $request->nama_matkul,
             'kode_matkul' => $request->kode_matkul,
             'sks'=>$request->sks,
             'semester'=>$request->semester,
             'dosen'=>$request->dosen,
+            'rubrik'=>$request->rubrik,
         ]);
+//        dd($test);
         return redirect('/dashboard');
     }
     public function edit($id)
@@ -34,6 +36,7 @@ class AddMatkulController extends Controller
             'sks'=>$request->sks,
             'semester'=>$request->semester,
             'dosen'=>$request->dosen,
+            'rubrik'=>$request->rubrik
         ]);
 //        dd($test);
         return redirect('/dashboard');

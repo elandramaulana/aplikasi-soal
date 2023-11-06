@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('sks');
             $table->integer('semester');
             $table->string('dosen');
+            $table->string('rubrik')->nullable();
             $table->timestamps();
         });
     }

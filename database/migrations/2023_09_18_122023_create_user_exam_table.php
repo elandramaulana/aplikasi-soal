@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('user_exam', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('user');
+            $table->foreignId('cpmk_id')->constrained('cpmk');
+            $table->integer('nilai');
             $table->timestamps();
         });
     }

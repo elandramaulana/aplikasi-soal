@@ -44,6 +44,10 @@
                 <label for="nama">Dosen Pengampu</label>
                 <input type="text" class="form-control" id="nama" name="dosen">
               </div>
+                <div class="form-group">
+                    <label for="nama">Link Rubrik</label>
+                    <input type="text" class="form-control" id="nama" name="rubrik">
+                </div>
 
               {{-- <div id="kolom-dinamis">
                 <!-- Kolom pertama (default) -->

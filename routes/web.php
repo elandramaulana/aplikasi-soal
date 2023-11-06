@@ -89,6 +89,7 @@ Route::middleware(['auth','checkRole:member'])->group(function () {
     Route::get('/asesmen', [HasilAsesmenController::class, 'index'])->name('asesmen');
     //ujian mhs
     Route::get('/ujian/{id}', [UjianController::class, 'index'])->name('ujian');
+    Route::post('/ujian', [UjianController::class, 'store'])->name('storeujian');
     //remedial
     Route::get('/remedial', [RemedialController::class, 'index'])->name('remedial');
 });

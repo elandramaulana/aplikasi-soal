@@ -6,6 +6,7 @@
   <title>Tambah CPMK</title>
   <!-- Tambahkan link Bootstrap CSS di sini -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="{{asset('template/css/style.css')}}" rel="stylesheet">
   <style>
     body {
       background: linear-gradient(to right, #007bff, #e2dcdb);
